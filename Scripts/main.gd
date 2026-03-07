@@ -5,11 +5,15 @@ const FISH_GROUP := "fish"
 @export var MAX_FISH: int = 20 # CONSTANT
 
 var time = 0.0
+var day = true
+var last_cycle_time = 0
 var fish_generate_time = 0
 
 var fishes = 0
 
 var level = 1
+
+var le_fishes = []
 
 func gen_fish():
 	var new_fish = FISH_SCENE.instantiate()
@@ -47,3 +51,13 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ui_accept"):
 		print_all_fish_positions()
+	if(day && time-last_cycle_time >= 60*12):
+		last_cycle_time = time
+		day = false
+	elif(!day && time-last_cycle_time >= 60*12):
+		last_cycle_time = time
+		day = true
+	if(day):
+		$NightBg.self_modulate.a = (time-last_cycle_time) / (60*12)
+	else:
+		$NightBg.self_modulate.a = 1 - (time-last_cycle_time) / (60*12)

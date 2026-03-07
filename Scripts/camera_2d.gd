@@ -17,7 +17,7 @@ func easeInOutCubic(x):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(get_parent().position[1] > -30):
+	if(get_parent().position[1] > 250 || get_parent().position[0] > 250):
 		if zoom.x > 1 && !zooming_in && !zooming_out:
 			zoom_timer = 0
 			zooming_out = true
