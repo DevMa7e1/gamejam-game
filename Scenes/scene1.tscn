@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://do6cxixnets08" path="res://Sprites/placeholeder.png" id="2_2xbvg"]
 [ext_resource type="Texture2D" uid="uid://duhkutiwhsh1p" path="res://Sprites/Sprite-0001.png" id="4_sdcb8"]
 [ext_resource type="Texture2D" uid="uid://cx3h6oe8mdfsx" path="res://Sprites/sand.png" id="5_2ni1t"]
+[ext_resource type="Script" uid="uid://c3pa6d75mtpcv" path="res://Scripts/camera_2d.gd" id="5_cx2iu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p20re"]
 size = Vector2(32, 32)
@@ -66,6 +67,8 @@ shape = SubResource("RectangleShape2D_p20re")
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D" unique_id=1843677216]
 scale = Vector2(2, 2)
+zoom = Vector2(2, 2)
+script = ExtResource("5_cx2iu")
 
 [node name="Area2D" type="Area2D" parent="RigidBody2D" unique_id=507542115]
 scale = Vector2(2, 2)
