@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://8eu4wsh5qlfp"]
+
+[ext_resource type="Texture2D" uid="uid://moqvtpqu1715" path="res://Sprites/fish.png" id="1_twvwo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4ibo"]
+radius = 8.0
+
+[node name="Node2D" type="Node2D" unique_id=1861621635]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1069430865]
+texture = ExtResource("1_twvwo")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=612226357]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=28051326]
+position = Vector2(-3, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_c4ibo")
