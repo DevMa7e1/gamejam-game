@@ -5,7 +5,7 @@ extends RigidBody2D
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var direction = Vector2.ZERO
 
-	if Input.is_action_pressed("ui_up") && position.y > -336.0:
+	if Input.is_action_pressed("ui_up") && position.y > -32.0:
 		direction.y -= 10
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 10
@@ -19,7 +19,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		state.linear_velocity = Vector2.ZERO
 
 func _process(delta: float) -> void:
-	if position.y < -336.0:
+	if position.y < -32.0:
 		$"../left/CollisionShape2D".disabled = true
 	else:
 		$"../left/CollisionShape2D".disabled = false
