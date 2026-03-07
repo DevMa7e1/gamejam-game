@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://duhkutiwhsh1p" path="res://Sprites/Sprite-0001.png" id="4_sdcb8"]
 [ext_resource type="Texture2D" uid="uid://cx3h6oe8mdfsx" path="res://Sprites/sand.png" id="5_2ni1t"]
 [ext_resource type="Script" uid="uid://c3pa6d75mtpcv" path="res://Scripts/camera_2d.gd" id="5_cx2iu"]
-[ext_resource type="Script" path="res://Scripts/fishnet.gd" id="9_wplxe"]
+[ext_resource type="Script" uid="uid://x5oghhp6poo0" path="res://Scripts/fishnet.gd" id="9_wplxe"]
 [ext_resource type="Texture2D" uid="uid://xuypmgd0v51i" path="res://Sprites/fish_net_normal_placeholder.png" id="10_5dfij"]
 [ext_resource type="Texture2D" uid="uid://b6b81mtesjt0m" path="res://Sprites/stand.png" id="11_5dfij"]
 
@@ -45,6 +45,12 @@ sources/1 = SubResource("TileSetAtlasSource_2nq82")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2tun"]
 size = Vector2(63, 26)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5dfij"]
+normal = Vector2(-1, 0)
+distance = 254.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dfij"]
+
 [node name="Node2D" type="Node2D" unique_id=1205070786]
 texture_filter = 1
 script = ExtResource("1_2nq82")
@@ -63,6 +69,14 @@ texture = ExtResource("1_2xbvg")
 position = Vector2(560, 1604)
 scale = Vector2(4, 4)
 texture = ExtResource("1_2xbvg")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=756215197]
+
+[node name="ItemList" type="ItemList" parent="Node2D" unique_id=1982560766]
+offset_left = -155.0
+offset_top = -155.0
+offset_right = 80.0
+offset_bottom = -35.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=107888402]
 position = Vector2(0, -41)
@@ -133,3 +147,16 @@ texture = ExtResource("11_5dfij")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stand" unique_id=498708058]
 shape = SubResource("WorldBoundaryShape2D_2xbvg")
+
+[node name="customers_border" type="StaticBody2D" parent="." unique_id=1131400657]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="customers_border" unique_id=439952451]
+shape = SubResource("WorldBoundaryShape2D_5dfij")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=76959475]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1363375900]
+position = Vector2(-266, -11)
+shape = SubResource("RectangleShape2D_5dfij")

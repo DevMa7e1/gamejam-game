@@ -10,36 +10,36 @@ var target: Vector2
 @export var arrive_distance: float = 12.0
 
 func get_level_bounds() -> Rect2:
-    var min_x = (level - 1) * 1920 + 50
-    var max_x = level * 1920
-    var min_y = (level - 1) * 1080 + 50
-    var max_y = level * 1080
-    return Rect2(Vector2(min_x, min_y), Vector2(max_x - min_x, max_y - min_y))
+	var min_x = (level - 1) * 1920 + 50
+	var max_x = level * 1920
+	var min_y = (level - 1) * 1080 + 50
+	var max_y = level * 1080
+	return Rect2(Vector2(min_x, min_y), Vector2(max_x - min_x, max_y - min_y))
 
 func choose_target() -> Vector2:
-    var bounds = get_level_bounds()
-    var angle = randf() * TAU
-    var distance = randf_range(min_wander_distance, max_wander_distance)
-    var candidate = position + Vector2.RIGHT.rotated(angle) * distance
+	var bounds = get_level_bounds()
+	var angle = randf() * TAU
+	var distance = randf_range(min_wander_distance, max_wander_distance)
+	var candidate = position + Vector2.RIGHT.rotated(angle) * distance
 
-    candidate.x = clamp(candidate.x, bounds.position.x, bounds.end.x)
-    candidate.y = clamp(candidate.y, bounds.position.y, bounds.end.y)
+	candidate.x = clamp(candidate.x, bounds.position.x, bounds.end.x)
+	candidate.y = clamp(candidate.y, bounds.position.y, bounds.end.y)
 
-    if candidate.distance_to(position) < min_wander_distance * 0.5:
-        candidate = Vector2(
-            randf_range(bounds.position.x, bounds.end.x),
-            randf_range(bounds.position.y, bounds.end.y)
-        )
+	if candidate.distance_to(position) < min_wander_distance * 0.5:
+		candidate = Vector2(
+			randf_range(bounds.position.x, bounds.end.x),
+			randf_range(bounds.position.y, bounds.end.y)
+		)
 
-    return candidate
+	return candidate
 
 func wander(delta: float) -> void:
-    position = position.move_toward(target, wander_speed * delta)
-    if position.distance_to(target) <= arrive_distance:
-        target = choose_target()
+	position = position.move_toward(target, wander_speed * delta)
+	if position.distance_to(target) <= arrive_distance:
+		target = choose_target()
 
 func _ready() -> void:
-    target = choose_target()
+	target = choose_target()
 
 func _process(delta: float) -> void:
-    wander(delta)
+	wander(delta)

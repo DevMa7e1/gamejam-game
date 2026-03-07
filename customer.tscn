@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cpuipix0pn50c"]
+
+[ext_resource type="Texture2D" uid="uid://cfxxg23ixssnc" path="res://Sprites/customer.png" id="1_7tiyv"]
+[ext_resource type="Script" uid="uid://dw5huih2qtdyi" path="res://customer.gd" id="2_r8ta2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ta2"]
+size = Vector2(76, 128)
+
+[node name="Node2D" type="Node2D" unique_id=480045443]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1794496345]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_r8ta2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=269578325]
+position = Vector2(-6, 0)
+shape = SubResource("RectangleShape2D_r8ta2")
+
+[node name="Customer" type="Sprite2D" parent="RigidBody2D" unique_id=1046251381]
+scale = Vector2(4, 4)
+texture = ExtResource("1_7tiyv")

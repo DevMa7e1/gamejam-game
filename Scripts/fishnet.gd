@@ -5,12 +5,13 @@ var fishing
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_entered.connect(_e)
-	body_exited.connect(_x)
+	area_entered.connect(_e)
+	area_exited.connect(_x)
 
 var bodies = []
 
 func _e(body):
+	print(body)
 	if(body != self):
 		bodies.append(body)
 
@@ -29,6 +30,7 @@ func _process(delta: float) -> void:
 		fishnet_timer += delta
 		if(fishnet_timer > 0.4):
 			get_child(0).texture = preload("res://Sprites/fish_net_normal_placeholder.png")
+			fishing = false
 			for i in bodies:
-				$"..".le_fishes.append([i.level, i.size])
-				i.queue_free()
+				$"..".le_fishes.append([i.get_parent().level, i.get_parent().size])
+				i.get_parent().queue_free()

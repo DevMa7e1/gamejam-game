@@ -40,10 +40,16 @@ func print_all_fish_positions() -> void:
 		print("No fish found")
 	print("Fish count:", fishes)
 
-
+func gen_customer():
+	var new_customer = preload("res://customer.tscn").instantiate()
+	new_customer.position = Vector2(-400, -50)
+	$".".add_child(new_customer)
 func _ready() -> void:
 	for i in range(5):
 		gen_fish()
+	for i in range(3):
+		gen_customer()
+
 
 func _process(delta: float) -> void:
 	time += delta
