@@ -7,6 +7,8 @@ var bgs = [$"../bg3", $"../bg1", $"../bg2"]
 @onready
 var bgs2 = [$"../bg3", $"../bg1", $"../bg2"]
 
+var gravity_acted = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Area2D.body_entered.connect(_entered)
@@ -38,10 +40,14 @@ func _process(delta: float) -> void:
 			touching = true
 	if !touching:
 		position += Vector2(0, gravity_fall_pixel_count)
+		gravity_acted = true
+	if touching && !gravity_acted:
+		position -= Vector2(0, 1)
 	if Input.is_action_pressed("ui_up"):
 		position += Vector2(0, -5)
 	if Input.is_action_pressed("ui_down") && !touching && not $"../ground/dirt" in cobj:
 		position += Vector2(0, 5)
+		gravity_acted = false
 	if Input.is_action_pressed("ui_left") && not $"../left" in cobj:
 		position += Vector2(-5, 0)
 	if Input.is_action_pressed("ui_right") && not $"../right" in cobj:
