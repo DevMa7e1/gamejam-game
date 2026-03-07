@@ -57,7 +57,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_o5784")
 
 [node name="OceanBg" type="Sprite2D" parent="." unique_id=476741861]
-position = Vector2(560, 648)
+position = Vector2(768, 648)
 scale = Vector2(4, 4)
 texture = ExtResource("1_2xbvg")
 
@@ -105,7 +105,7 @@ shape = SubResource("WorldBoundaryShape2D_2xbvg")
 disabled = true
 
 [node name="right" type="StaticBody2D" parent="." unique_id=248391126]
-position = Vector2(1144, 0)
+position = Vector2(1920, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right" unique_id=532537731]
 shape = SubResource("WorldBoundaryShape2D_sdcb8")

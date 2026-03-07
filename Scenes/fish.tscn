@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3smc1gojt34j"]
 
-[ext_resource type="Script" path="res://Scripts/fish-properties.gd" id="1_c4ibo"]
+[ext_resource type="Script" uid="uid://iw4wowny3oe5" path="res://Scripts/fish.gd" id="1_c4ibo"]
 [ext_resource type="Texture2D" uid="uid://moqvtpqu1715" path="res://Sprites/fish.png" id="1_twvwo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4ibo"]
@@ -8,6 +8,7 @@ radius = 8.0
 
 [node name="fish" type="Node2D" unique_id=1861621635]
 script = ExtResource("1_c4ibo")
+wander_speed = 80.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1069430865]
 texture = ExtResource("1_twvwo")

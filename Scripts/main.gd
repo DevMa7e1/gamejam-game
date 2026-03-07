@@ -42,7 +42,8 @@ func print_all_fish_positions() -> void:
 
 
 func _ready() -> void:
-	gen_fish()
+	for i in range(5):
+		gen_fish()
 
 func _process(delta: float) -> void:
 	time += delta
