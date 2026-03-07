@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		position += Vector2(0, gravity_fall_pixel_count)
 	if Input.is_action_pressed("ui_up"):
 		position += Vector2(0, -5)
-	if Input.is_action_pressed("ui_down") && not $"../ground/dirt" in cobj:
+	if Input.is_action_pressed("ui_down") && !touching && not $"../ground/dirt" in cobj:
 		position += Vector2(0, 5)
 	if Input.is_action_pressed("ui_left") && not $"../left" in cobj:
 		position += Vector2(-5, 0)

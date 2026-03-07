@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://djjvpkuyeuijr"]
+[gd_scene format=4 uid="uid://djjvpkuyeuijr"]
 
 [ext_resource type="Script" uid="uid://32s30r4dvlrl" path="res://Scripts/movement.gd" id="1_1mf5u"]
 [ext_resource type="Texture2D" uid="uid://lca68jtvcqnx" path="res://Sprites/ocean-bg-placeholder.png" id="1_2xbvg"]
 [ext_resource type="Texture2D" uid="uid://do6cxixnets08" path="res://Sprites/placeholeder.png" id="2_2xbvg"]
+[ext_resource type="Texture2D" uid="uid://duhkutiwhsh1p" path="res://Sprites/Sprite-0001.png" id="4_sdcb8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xbvg"]
 size = Vector2(2304, 1296)
@@ -17,6 +18,17 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdcb8"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ni1t"]
+texture = ExtResource("4_sdcb8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_2nq82"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2ni1t")
 
 [node name="Node2D" type="Node2D" unique_id=1205070786]
 texture_filter = 1
@@ -92,3 +104,7 @@ position = Vector2(1144, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right" unique_id=532537731]
 shape = SubResource("WorldBoundaryShape2D_sdcb8")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=452972038]
+tile_map_data = PackedByteArray("AAAOAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_2nq82")
