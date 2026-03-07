@@ -49,6 +49,8 @@ size = Vector2(63, 26)
 normal = Vector2(-1, 0)
 distance = 254.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d2tun"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dfij"]
 
 [node name="Node2D" type="Node2D" unique_id=1205070786]
@@ -157,8 +159,14 @@ collision_mask = 2
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="customers_border" unique_id=439952451]
 shape = SubResource("WorldBoundaryShape2D_5dfij")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="customers_border" unique_id=1153273397]
+position = Vector2(-1, 0)
+shape = SubResource("WorldBoundaryShape2D_d2tun")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=76959475]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1363375900]
-position = Vector2(-266, -11)
+position = Vector2(-274, -19)
 shape = SubResource("RectangleShape2D_5dfij")

@@ -1,6 +1,6 @@
 extends Node2D
 
-var size = 0
+var color = 0
 var level = 1
 var target: Vector2
 

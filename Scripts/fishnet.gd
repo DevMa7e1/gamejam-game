@@ -61,6 +61,6 @@ func _process(delta: float) -> void:
 			get_child(0).texture = preload("res://Sprites/fish_net_normal_placeholder.png")
 			fishing = false
 			for i in bodies:
-				$"..".le_fishes.append([i.level, i.size])
+				$"..".le_fishes.append([i.level, i.color])
 				i.queue_free()
 			bodies.clear()
