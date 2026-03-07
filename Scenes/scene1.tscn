@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://djjvpkuyeuijr"]
 
 [ext_resource type="Script" uid="uid://32s30r4dvlrl" path="res://Scripts/movement.gd" id="1_1mf5u"]
+[ext_resource type="Script" uid="uid://umb6ve40jlil" path="res://Scripts/main.gd" id="1_2nq82"]
 [ext_resource type="Texture2D" uid="uid://lca68jtvcqnx" path="res://Sprites/ocean-bg-placeholder.png" id="1_2xbvg"]
 [ext_resource type="Texture2D" uid="uid://do6cxixnets08" path="res://Sprites/placeholeder.png" id="2_2xbvg"]
 [ext_resource type="Texture2D" uid="uid://duhkutiwhsh1p" path="res://Sprites/Sprite-0001.png" id="4_sdcb8"]
@@ -38,6 +39,7 @@ sources/1 = SubResource("TileSetAtlasSource_2nq82")
 
 [node name="Node2D" type="Node2D" unique_id=1205070786]
 texture_filter = 1
+script = ExtResource("1_2nq82")
 
 [node name="OceanBg" type="Sprite2D" parent="." unique_id=476741861]
 position = Vector2(560, 648)
