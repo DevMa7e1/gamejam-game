@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://djjvpkuyeuijr"]
+
+[ext_resource type="Script" uid="uid://32s30r4dvlrl" path="res://Scripts/movement.gd" id="1_1mf5u"]
+[ext_resource type="Texture2D" uid="uid://do6cxixnets08" path="res://Sprites/placeholeder.png" id="2_2xbvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p20re"]
+size = Vector2(32, 32)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m2sqd"]
+
+[node name="Node2D" type="Node2D" unique_id=1205070786]
+texture_filter = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=456642705]
+position = Vector2(568, 305)
+scale = Vector2(2, 2)
+script = ExtResource("1_1mf5u")
+
+[node name="Placeholeder" type="Sprite2D" parent="StaticBody2D" unique_id=270505474]
+texture = ExtResource("2_2xbvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=562715662]
+shape = SubResource("RectangleShape2D_p20re")
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D" unique_id=1843677216]
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D" unique_id=507542115]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D" unique_id=1967798308]
+shape = SubResource("RectangleShape2D_p20re")
+
+[node name="ground" type="Node2D" parent="." unique_id=108597482]
+position = Vector2(16, 632)
+
+[node name="dirt" type="StaticBody2D" parent="ground" unique_id=1946675073]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/dirt" unique_id=755823694]
+shape = SubResource("WorldBoundaryShape2D_m2sqd")
