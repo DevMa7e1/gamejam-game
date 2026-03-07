@@ -4,7 +4,8 @@ var gravity_fall_pixel_count = 1
 var cobj = []
 @onready
 var bgs = [$"../bg3", $"../bg1", $"../bg2"]
-var bgt
+@onready
+var bgs2 = [$"../bg3", $"../bg1", $"../bg2"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +13,18 @@ func _ready() -> void:
 	$Area2D.body_exited.connect(_exited)
 
 func _entered(body):
+	if(body == bgs[2]):
+		bgs[0].position += Vector2(0, 648*3)
+		bgs2[2] = bgs[0]
+		bgs2[1] = bgs[2]
+		bgs2[0] = bgs[1]
+		bgs = bgs2
+	if(body == bgs[0]):
+		bgs[2].position -= Vector2(0, 648*3)
+		bgs2[0] = bgs[2]
+		bgs2[1] = bgs[0]
+		bgs2[2] = bgs[1]
+		bgs2 = bgs
 	cobj.append(body)
 
 func _exited(body):
@@ -20,12 +33,9 @@ func _exited(body):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var touching = false
-	var who: Node2D
 	for i in cobj:
-		if(i.get_parent() == $"../ground"):
+		if(not "bg" in i.name && i != $"." && i != $"../left" && i != $"../right"):
 			touching = true
-			who = i
-			break
 	if !touching:
 		position += Vector2(0, gravity_fall_pixel_count)
 	if Input.is_action_pressed("ui_up"):
