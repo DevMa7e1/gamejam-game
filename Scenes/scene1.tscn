@@ -1,15 +1,60 @@
 [gd_scene format=3 uid="uid://djjvpkuyeuijr"]
 
 [ext_resource type="Script" uid="uid://32s30r4dvlrl" path="res://Scripts/movement.gd" id="1_1mf5u"]
+[ext_resource type="Texture2D" uid="uid://lca68jtvcqnx" path="res://Sprites/ocean-bg-placeholder.png" id="1_2xbvg"]
 [ext_resource type="Texture2D" uid="uid://do6cxixnets08" path="res://Sprites/placeholeder.png" id="2_2xbvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xbvg"]
+size = Vector2(2304, 1296)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p20re"]
 size = Vector2(32, 32)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m2sqd"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2xbvg"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdcb8"]
+normal = Vector2(-1, 0)
+
 [node name="Node2D" type="Node2D" unique_id=1205070786]
 texture_filter = 1
+
+[node name="bg1" type="StaticBody2D" parent="." unique_id=890195617]
+
+[node name="OceanBg" type="Sprite2D" parent="bg1" unique_id=476741861]
+position = Vector2(576, 308)
+scale = Vector2(4, 4)
+texture = ExtResource("1_2xbvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg1" unique_id=1984595574]
+position = Vector2(576, 308)
+shape = SubResource("RectangleShape2D_2xbvg")
+
+[node name="bg2" type="StaticBody2D" parent="." unique_id=570390191]
+position = Vector2(0, 1296)
+
+[node name="OceanBg" type="Sprite2D" parent="bg2" unique_id=1163835218]
+position = Vector2(576, 308)
+scale = Vector2(4, 4)
+texture = ExtResource("1_2xbvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg2" unique_id=296834088]
+position = Vector2(576, 308)
+shape = SubResource("RectangleShape2D_2xbvg")
+
+[node name="bg3" type="StaticBody2D" parent="." unique_id=1555130493]
+position = Vector2(0, -1296)
+
+[node name="OceanBg" type="Sprite2D" parent="bg3" unique_id=1040047836]
+position = Vector2(576, 308)
+scale = Vector2(4, 4)
+texture = ExtResource("1_2xbvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg3" unique_id=1954884338]
+position = Vector2(576, 308)
+shape = SubResource("RectangleShape2D_2xbvg")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=456642705]
 position = Vector2(568, 305)
@@ -36,3 +81,14 @@ position = Vector2(16, 632)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground/dirt" unique_id=755823694]
 shape = SubResource("WorldBoundaryShape2D_m2sqd")
+
+[node name="left" type="StaticBody2D" parent="." unique_id=2038035600]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left" unique_id=329550539]
+shape = SubResource("WorldBoundaryShape2D_2xbvg")
+
+[node name="right" type="StaticBody2D" parent="." unique_id=248391126]
+position = Vector2(1144, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right" unique_id=532537731]
+shape = SubResource("WorldBoundaryShape2D_sdcb8")
