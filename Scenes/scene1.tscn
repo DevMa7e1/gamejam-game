@@ -79,6 +79,7 @@ offset_left = -155.0
 offset_top = -155.0
 offset_right = 80.0
 offset_bottom = -35.0
+theme_override_font_sizes/font_size = 8
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=107888402]
 position = Vector2(0, -41)

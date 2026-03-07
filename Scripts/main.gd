@@ -66,13 +66,22 @@ func sold_a_fish(level):
 		level_probs[level] -= .05
 		level_probs[level+1] += .05
 
+var dem_fishes_that_they_want = []
+
 func _new_customer(body):
 	customer = body
 	print(body)
 	$Node2D/ItemList.clear()
+	dem_fishes_that_they_want.clear()
 	for i in range(len(level_probs)):
 		if(randf() < level_probs[i]):
-			$Node2D/ItemList.add_item("Fish level " + str(i+1) + " color " + colors.pick_random())
+			var color = colors.pick_random()
+			var have = 0
+			for j in le_fishes:
+				if j[0] == level && j[1] == colors.find(color):
+					have += 1
+			$Node2D/ItemList.add_item("Fish level " + str(i+1) + " color " + color + " (you have "+str(have)+")")
+			dem_fishes_that_they_want.append([i+1, colors.find(color), have])
 
 func _process(delta: float) -> void:
 	time += delta
@@ -82,6 +91,16 @@ func _process(delta: float) -> void:
 		if(customer):
 			customer.queue_free()
 			gen_customer()
+	if Input.is_action_just_pressed("customer key"):
+		var ok = true
+		for i in dem_fishes_that_they_want:
+			if(i[2] < 1):
+				ok = false
+		if(ok):
+			customer.queue_free()
+			gen_customer()
+			for i in dem_fishes_that_they_want:
+				le_fishes.erase([i[0], i[1]])
 	if Input.is_action_just_pressed("ui_accept"):
 		print_all_fish_positions()
 	if(day && time-last_cycle_time >= 60*12):
