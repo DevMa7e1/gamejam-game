@@ -63,4 +63,6 @@ func _process(delta: float) -> void:
 			for i in bodies:
 				$"..".le_fishes.append([i.level, i.color])
 				i.queue_free()
+			$"..".check_le_fishes()
+			$"..".display_want()
 			bodies.clear()

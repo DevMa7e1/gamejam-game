@@ -68,6 +68,20 @@ func sold_a_fish(level):
 
 var dem_fishes_that_they_want = []
 
+func check_le_fishes():
+	for i in dem_fishes_that_they_want:
+		i[2] = 0
+	for i in dem_fishes_that_they_want:
+		for j in le_fishes:
+			if i[0] == j[0] && i[1] == j[1]:
+				print("a")
+				i[2] += 1
+
+func display_want():
+	$Node2D/ItemList.clear()
+	for i in dem_fishes_that_they_want:
+		$Node2D/ItemList.add_item("Fish level " + str(i[0]) + " color " + colors[i[1]] + " (you have "+str(i[2])+")")
+
 func _new_customer(body):
 	customer = body
 	print(body)
@@ -80,8 +94,8 @@ func _new_customer(body):
 			for j in le_fishes:
 				if j[0] == level && j[1] == colors.find(color):
 					have += 1
-			$Node2D/ItemList.add_item("Fish level " + str(i+1) + " color " + color + " (you have "+str(have)+")")
 			dem_fishes_that_they_want.append([i+1, colors.find(color), have])
+			display_want()
 
 func _process(delta: float) -> void:
 	time += delta
