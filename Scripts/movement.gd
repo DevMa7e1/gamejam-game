@@ -19,7 +19,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		state.linear_velocity = Vector2.ZERO
 
 func _process(delta: float) -> void:
-	if position.y < 0:
+	if position.y < -20:
 		$"../left/CollisionShape2D".disabled = true
 	else:
 		$"../left/CollisionShape2D".disabled = false
