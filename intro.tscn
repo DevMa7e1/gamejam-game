@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dt6ammddsjg4y"]
+
+[ext_resource type="Script" uid="uid://cq4a777asel1t" path="res://Scripts/intro.gd" id="1_ayt76"]
+[ext_resource type="Texture2D" uid="uid://dnohcju3mklrb" path="res://Intro/sprite_0.png" id="2_7a8ye"]
+[ext_resource type="FontFile" uid="uid://blv7yb3gb04d8" path="res://SpaceMono-Regular.ttf" id="3_7a8ye"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0a7ni"]
+font = ExtResource("3_7a8ye")
+font_size = 128
+
+[node name="Node2D" type="Node2D" unique_id=323752128]
+texture_filter = 1
+script = ExtResource("1_ayt76")
+
+[node name="Sprite0" type="Sprite2D" parent="." unique_id=590883019]
+visible = false
+position = Vector2(517, 525)
+scale = Vector2(8, 8)
+texture = ExtResource("2_7a8ye")
+
+[node name="Label" type="Label" parent="." unique_id=1954501801]
+offset_left = 598.0
+offset_top = 319.0
+offset_right = 2013.0
+offset_bottom = 848.0
+label_settings = SubResource("LabelSettings_0a7ni")
