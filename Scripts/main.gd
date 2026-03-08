@@ -111,6 +111,8 @@ func _process(delta: float) -> void:
 		for i in dem_fishes_that_they_want:
 			if(i[2] < 1):
 				ok = false
+		if(len(dem_fishes_that_they_want) < 1):
+			ok = false
 		if(ok):
 			customer.queue_free()
 			if(day):
