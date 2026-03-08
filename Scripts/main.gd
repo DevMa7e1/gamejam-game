@@ -19,9 +19,10 @@ func gen_fish():
 	var new_fish = FISH_SCENE.instantiate()
 	new_fish.level = randi_range(1, level)
 	new_fish.color = randi_range(1, 3)
-	new_fish.get_child(0).texture = load("res://Sprites/fish(1-"+str(new_fish.color)+").png")
+	new_fish.set_color()
 	new_fish.position.x = randi_range((new_fish.level-1) * 1920 + 50, new_fish.level * 1920)
 	new_fish.position.y = randi_range((new_fish.level-1) * 1080 + 50, new_fish.level * 1080)
+	new_fish.scale = Vector2(1 + new_fish.level*0.2, 1 + new_fish.level*0.2)
 	new_fish.add_to_group(FISH_GROUP)
 	add_child(new_fish)
 	fish_generate_time = time + randi_range(10, 30)
@@ -52,7 +53,7 @@ func _ready() -> void:
 		gen_fish()
 
 var level_probs = [1.0]
-var colors = ['light blue', 'white', 'green']
+var colors = ['red', 'orange', 'pink', 'purple']
 
 var money = 10000
 
@@ -116,6 +117,7 @@ func _process(delta: float) -> void:
 				gen_customer()
 			for i in dem_fishes_that_they_want:
 				money += randi_range(i[0]*100-100, i[0]*100)
+				sold_a_fish(i[0])
 				le_fishes.erase([i[0], i[1]])
 	if Input.is_action_just_pressed("ui_accept"):
 		print_all_fish_positions()

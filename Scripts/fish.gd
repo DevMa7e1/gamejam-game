@@ -38,6 +38,16 @@ func wander(delta: float) -> void:
 	if position.distance_to(target) <= arrive_distance:
 		target = choose_target()
 
+func set_color():
+	if color == 0:
+		$AnimatedSprite2D.animation = "red"
+	elif color == 1:
+		$AnimatedSprite2D.animation = "orange"
+	elif color == 2:
+		$AnimatedSprite2D.animation = "pink"
+	elif color == 4:
+		$AnimatedSprite2D.animation = "purple"
+
 func _ready() -> void:
 	target = choose_target()
 

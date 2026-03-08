@@ -45,7 +45,7 @@ func _x(collider):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var player_pos = $"../RigidBody2D".position
-	position = player_pos + Vector2(100, -20)
+	position = player_pos + Vector2(50, -20)
 
 	var is_locked_zone = player_pos.x <= 250 and player_pos.y <= -30
 	_set_net_enabled(!is_locked_zone)

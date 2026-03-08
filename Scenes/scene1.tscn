@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://32s30r4dvlrl" path="res://Scripts/movement.gd" id="1_1mf5u"]
 [ext_resource type="Script" uid="uid://umb6ve40jlil" path="res://Scripts/main.gd" id="1_2nq82"]
 [ext_resource type="Texture2D" uid="uid://lca68jtvcqnx" path="res://Sprites/ocean-bg-placeholder.png" id="1_2xbvg"]
-[ext_resource type="Texture2D" uid="uid://do6cxixnets08" path="res://Sprites/placeholeder.png" id="2_2xbvg"]
 [ext_resource type="Texture2D" uid="uid://dvt3op8lnxpmk" path="res://Sprites/night_bg.png" id="2_o5784"]
 [ext_resource type="Texture2D" uid="uid://duhkutiwhsh1p" path="res://Sprites/Sprite-0001.png" id="4_sdcb8"]
 [ext_resource type="Texture2D" uid="uid://cx3h6oe8mdfsx" path="res://Sprites/sand.png" id="5_2ni1t"]
 [ext_resource type="Script" uid="uid://c3pa6d75mtpcv" path="res://Scripts/camera_2d.gd" id="5_cx2iu"]
+[ext_resource type="Texture2D" uid="uid://dgri2g2m182f6" path="res://Sprites/Diver 22.png" id="5_m8drc"]
 [ext_resource type="Texture2D" uid="uid://d2twp7ca27vtj" path="res://Sprites/oxygen_under.png" id="7_m8drc"]
 [ext_resource type="Texture2D" uid="uid://cmdcssuqyvqiy" path="res://Sprites/oxygen-progress.png" id="8_arbli"]
 [ext_resource type="Script" uid="uid://x5oghhp6poo0" path="res://Scripts/fishnet.gd" id="9_wplxe"]
@@ -91,7 +91,7 @@ script = ExtResource("1_1mf5u")
 
 [node name="Placeholeder" type="Sprite2D" parent="RigidBody2D" unique_id=270505474]
 scale = Vector2(2, 2)
-texture = ExtResource("2_2xbvg")
+texture = ExtResource("5_m8drc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=562715662]
 scale = Vector2(2, 2)
