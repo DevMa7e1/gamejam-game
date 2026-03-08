@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://njw8uyt63fby"]
+
+[ext_resource type="Texture2D" uid="uid://dvt3op8lnxpmk" path="res://Sprites/night_bg.png" id="1_41xl8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r18af"]
+font_size = 128
+
+[node name="Node2D" type="Node2D" unique_id=1132477664]
+
+[node name="NightBg" type="Sprite2D" parent="." unique_id=1371345161]
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("1_41xl8")
+
+[node name="Label" type="Label" parent="." unique_id=704098160]
+offset_left = 371.0
+offset_top = 433.0
+offset_right = 1552.0
+offset_bottom = 608.0
+text = "You tragically died."
+label_settings = SubResource("LabelSettings_r18af")

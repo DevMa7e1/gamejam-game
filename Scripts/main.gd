@@ -4,7 +4,7 @@ const FISH_SCENE := preload("res://Scenes/fish.tscn")
 const FISH_GROUP := "fish"
 @export var MAX_FISH: int = 20 # CONSTANT
 
-var time = 0.0
+var time = 719.0
 var day = true
 var last_cycle_time = 0
 var fish_generate_time = 0
@@ -50,11 +50,11 @@ func _ready() -> void:
 	$Area2D.body_entered.connect(_new_customer)
 	for i in range(5):
 		gen_fish()
-	for i in range(3):
-		gen_customer()
 
 var level_probs = [1.0]
 var colors = ['light blue', 'white', 'green']
+
+var money = 10000
 
 var customer
 
@@ -74,7 +74,6 @@ func check_le_fishes():
 	for i in dem_fishes_that_they_want:
 		for j in le_fishes:
 			if i[0] == j[0] && i[1] == j[1]:
-				print("a")
 				i[2] += 1
 
 func display_want():
@@ -101,10 +100,11 @@ func _process(delta: float) -> void:
 	time += delta
 	if fish_generate_time <= time && fishes < MAX_FISH:
 		gen_fish()
-	if Input.is_action_just_pressed("reject customer key"):
+	if Input.is_action_just_pressed("reject customer key") && day:
 		if(customer):
 			customer.queue_free()
-			gen_customer()
+			if(day):
+				gen_customer()
 	if Input.is_action_just_pressed("customer key"):
 		var ok = true
 		for i in dem_fishes_that_they_want:
@@ -112,18 +112,62 @@ func _process(delta: float) -> void:
 				ok = false
 		if(ok):
 			customer.queue_free()
-			gen_customer()
+			if(day):
+				gen_customer()
 			for i in dem_fishes_that_they_want:
+				money += randi_range(i[0]*100-100, i[0]*100)
 				le_fishes.erase([i[0], i[1]])
 	if Input.is_action_just_pressed("ui_accept"):
 		print_all_fish_positions()
-	if(day && time-last_cycle_time >= 60*12):
+	if(day && time-last_cycle_time >= 60*2):
 		last_cycle_time = time
 		day = false
-	elif(!day && time-last_cycle_time >= 60*12):
+	elif(!day && time-last_cycle_time >= 60*2):
 		last_cycle_time = time
 		day = true
+		for i in range(3):
+			gen_customer()
 	if(day):
-		$NightBg.self_modulate.a = (time-last_cycle_time) / (60*12)
+		$NightBg.self_modulate.a = (time-last_cycle_time) / (60*2)
 	else:
-		$NightBg.self_modulate.a = 1 - (time-last_cycle_time) / (60*12)
+		$NightBg.self_modulate.a = 1 - (time-last_cycle_time) / (60*2)
+
+
+func _on_button_3_pressed() -> void:
+	$"RigidBody2D/upgrade-interface/Panel".hide()
+
+
+func _on_button_pressed() -> void:
+	$"RigidBody2D/upgrade-interface/Panel".show()
+
+var money_to_upgrade_the_net = 100
+var money_to_upgrade_oxygen = 200
+var money_to_upgrade_level = 500
+
+func update_money():
+	$"RigidBody2D/upgrade-interface/Panel/Label3".text = str(money) + " money"
+
+func _on_button_pressed2() -> void:
+	if(money >= money_to_upgrade_the_net):
+		money -= money_to_upgrade_the_net
+		$fishnet.scale[0] += 0.1
+		update_money()
+
+
+func _on_button_2_pressed() -> void:
+	if(money >= money_to_upgrade_oxygen):
+		money -= money_to_upgrade_oxygen
+		$RigidBody2D.oxygen_decrease * .8
+		update_money()
+
+
+func _on_button_4_pressed() -> void:
+	if(money >= money_to_upgrade_level):
+		money -= money_to_upgrade_level
+		level += 1
+		$ground.position += Vector2(0, 1080)
+		var new_bg = $OceanBg2.duplicate()
+		new_bg.position += Vector2(0, 1080 * (level-1))
+		$"..".add_child(new_bg)
+		level_probs.append(0.5)
+		update_money()

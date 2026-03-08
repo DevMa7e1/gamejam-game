@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 		if zoom.x > 1 && !zooming_in && !zooming_out:
 			zoom_timer = 0
 			zooming_out = true
+			$"../upgrade-interface/Button".hide()
 	else:
 		if zoom.x < 2 && !zooming_in && !zooming_out:
 			zoom_timer = 0
@@ -31,6 +32,7 @@ func _process(delta: float) -> void:
 		if(zoom_timer > 2):
 			zooming_in = false
 			zoom_timer = 0
+			$"../upgrade-interface/Button".show()
 	elif(zooming_out):
 		zoom_timer += delta
 		zoom = Vector2(1+(1 - easeInOutCubic(zoom_timer/2)), 1+(1 - easeInOutCubic(zoom_timer/2)))

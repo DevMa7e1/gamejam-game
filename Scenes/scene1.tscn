@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://duhkutiwhsh1p" path="res://Sprites/Sprite-0001.png" id="4_sdcb8"]
 [ext_resource type="Texture2D" uid="uid://cx3h6oe8mdfsx" path="res://Sprites/sand.png" id="5_2ni1t"]
 [ext_resource type="Script" uid="uid://c3pa6d75mtpcv" path="res://Scripts/camera_2d.gd" id="5_cx2iu"]
+[ext_resource type="Texture2D" uid="uid://d2twp7ca27vtj" path="res://Sprites/oxygen_under.png" id="7_m8drc"]
+[ext_resource type="Texture2D" uid="uid://cmdcssuqyvqiy" path="res://Sprites/oxygen-progress.png" id="8_arbli"]
 [ext_resource type="Script" uid="uid://x5oghhp6poo0" path="res://Scripts/fishnet.gd" id="9_wplxe"]
 [ext_resource type="Texture2D" uid="uid://xuypmgd0v51i" path="res://Sprites/fish_net_normal_placeholder.png" id="10_5dfij"]
 [ext_resource type="Texture2D" uid="uid://b6b81mtesjt0m" path="res://Sprites/stand.png" id="11_5dfij"]
@@ -68,7 +70,8 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_2xbvg")
 
 [node name="OceanBg2" type="Sprite2D" parent="." unique_id=1163835218]
-position = Vector2(768, 1604)
+z_index = -1
+position = Vector2(768, 1944)
 scale = Vector2(4, 4)
 texture = ExtResource("1_2xbvg")
 
@@ -104,6 +107,100 @@ scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D" unique_id=1967798308]
 shape = SubResource("RectangleShape2D_p20re")
+
+[node name="upgrade-interface" type="Node2D" parent="RigidBody2D" unique_id=401983102]
+z_index = 1
+
+[node name="Panel" type="Panel" parent="RigidBody2D/upgrade-interface" unique_id=261868150]
+visible = false
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 126.0
+offset_bottom = 91.0
+
+[node name="Label" type="Label" parent="RigidBody2D/upgrade-interface/Panel" unique_id=1156872227]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 117.0
+offset_bottom = 31.0
+text = "Fish net reach"
+
+[node name="Button" type="Button" parent="RigidBody2D/upgrade-interface/Panel" unique_id=1246036544]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 123.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 8
+text = "Upgrade (100 money)"
+
+[node name="Label2" type="Label" parent="RigidBody2D/upgrade-interface/Panel" unique_id=749267731]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 135.0
+offset_bottom = 87.0
+text = "Oxygen capacity"
+
+[node name="Button2" type="Button" parent="RigidBody2D/upgrade-interface/Panel" unique_id=442176439]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 88.0
+offset_right = 123.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 8
+text = "Upgrade (200 money)"
+
+[node name="Button3" type="Button" parent="RigidBody2D/upgrade-interface/Panel" unique_id=1547710389]
+layout_mode = 0
+offset_left = 236.0
+offset_right = 254.0
+offset_bottom = 31.0
+text = "X"
+
+[node name="Label3" type="Label" parent="RigidBody2D/upgrade-interface/Panel" unique_id=372035825]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 163.0
+offset_right = 68.0
+offset_bottom = 186.0
+text = "0 money"
+
+[node name="Label4" type="Label" parent="RigidBody2D/upgrade-interface/Panel" unique_id=1941194641]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 121.0
+offset_right = 135.0
+offset_bottom = 144.0
+text = "Maximum ocean level"
+
+[node name="Button4" type="Button" parent="RigidBody2D/upgrade-interface/Panel" unique_id=761569477]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 145.0
+offset_right = 123.0
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 8
+text = "Upgrade (500 money)"
+
+[node name="Button" type="Button" parent="RigidBody2D/upgrade-interface" unique_id=1424650650]
+offset_left = 388.0
+offset_top = -256.0
+offset_right = 470.0
+offset_bottom = -225.0
+text = "Upgrades"
+
+[node name="Oxygen" type="Node2D" parent="RigidBody2D" unique_id=134953267]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="RigidBody2D/Oxygen" unique_id=468324289]
+offset_left = -16.0
+offset_top = -71.0
+offset_right = 16.0
+offset_bottom = -39.0
+value = 100.0
+texture_under = ExtResource("7_m8drc")
+texture_progress = ExtResource("8_arbli")
 
 [node name="ground" type="Node2D" parent="." unique_id=108597482]
 position = Vector2(16, 1080)
@@ -171,3 +268,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1363375900]
 position = Vector2(-274, -19)
 shape = SubResource("RectangleShape2D_5dfij")
+
+[connection signal="pressed" from="RigidBody2D/upgrade-interface/Panel/Button" to="." method="_on_button_pressed2"]
+[connection signal="pressed" from="RigidBody2D/upgrade-interface/Panel/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="RigidBody2D/upgrade-interface/Panel/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="RigidBody2D/upgrade-interface/Panel/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="RigidBody2D/upgrade-interface/Button" to="." method="_on_button_pressed"]
