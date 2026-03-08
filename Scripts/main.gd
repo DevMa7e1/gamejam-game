@@ -55,17 +55,17 @@ func _ready() -> void:
 var level_probs = [1.0]
 var colors = ['red', 'orange', 'pink', 'purple']
 
-var money = 10000
+var money = 0
 
 var customer
 
 func sold_a_fish(level):
 	if(level+1 >= len(level_probs)):
 		level_probs[0] += .05
-		level_probs[level] -= .05
+		level_probs[level-1] -= .05
 	else:
-		level_probs[level] -= .05
-		level_probs[level+1] += .05
+		level_probs[level-1] -= .05
+		level_probs[level] += .05
 
 var dem_fishes_that_they_want = []
 
@@ -119,6 +119,7 @@ func _process(delta: float) -> void:
 				money += randi_range(i[0]*100-100, i[0]*100)
 				sold_a_fish(i[0])
 				le_fishes.erase([i[0], i[1]])
+				update_money()
 	if Input.is_action_just_pressed("ui_accept"):
 		print_all_fish_positions()
 	if(day && time-last_cycle_time >= 60*2):
@@ -169,7 +170,7 @@ func _on_button_4_pressed() -> void:
 		level += 1
 		$ground.position += Vector2(0, 1080)
 		var new_bg = $OceanBg2.duplicate()
-		new_bg.position += Vector2(0, 1080 * (level-1))
+		new_bg.position += Vector2(0, 1080 / 5 * 10 * (level-1))
 		$"..".add_child(new_bg)
 		level_probs.append(0.5)
 		update_money()

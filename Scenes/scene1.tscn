@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://32s30r4dvlrl" path="res://Scripts/movement.gd" id="1_1mf5u"]
 [ext_resource type="Script" uid="uid://umb6ve40jlil" path="res://Scripts/main.gd" id="1_2nq82"]
-[ext_resource type="Texture2D" uid="uid://lca68jtvcqnx" path="res://Sprites/ocean-bg-placeholder.png" id="1_2xbvg"]
 [ext_resource type="Texture2D" uid="uid://dvt3op8lnxpmk" path="res://Sprites/night_bg.png" id="2_o5784"]
+[ext_resource type="Texture2D" uid="uid://2m1aojv3tjyy" path="res://Sprites/ocean-bg.png" id="3_m8drc"]
 [ext_resource type="Texture2D" uid="uid://duhkutiwhsh1p" path="res://Sprites/Sprite-0001.png" id="4_sdcb8"]
 [ext_resource type="Texture2D" uid="uid://cx3h6oe8mdfsx" path="res://Sprites/sand.png" id="5_2ni1t"]
 [ext_resource type="Script" uid="uid://c3pa6d75mtpcv" path="res://Scripts/camera_2d.gd" id="5_cx2iu"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b6b81mtesjt0m" path="res://Sprites/stand.png" id="11_5dfij"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p20re"]
-size = Vector2(32, 32)
+size = Vector2(24.5, 32)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m2sqd"]
 
@@ -60,20 +60,19 @@ texture_filter = 1
 script = ExtResource("1_2nq82")
 
 [node name="NightBg" type="Sprite2D" parent="." unique_id=1308225498]
-position = Vector2(367, -1080)
+position = Vector2(1104, -1080)
 scale = Vector2(4, 4)
 texture = ExtResource("2_o5784")
 
 [node name="OceanBg" type="Sprite2D" parent="." unique_id=476741861]
-position = Vector2(768, 648)
-scale = Vector2(4, 4)
-texture = ExtResource("1_2xbvg")
+position = Vector2(1104.0002, 1080.0001)
+scale = Vector2(10, 10)
+texture = ExtResource("3_m8drc")
 
-[node name="OceanBg2" type="Sprite2D" parent="." unique_id=1163835218]
-z_index = -1
-position = Vector2(768, 1944)
-scale = Vector2(4, 4)
-texture = ExtResource("1_2xbvg")
+[node name="OceanBg2" type="Sprite2D" parent="." unique_id=653639387]
+position = Vector2(1104, 3240)
+scale = Vector2(10, 10)
+texture = ExtResource("3_m8drc")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=756215197]
 

@@ -11,12 +11,19 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	if Input.is_action_pressed("ui_up") && position.y > -30.0:
 		direction.y -= 10
+	if Input.is_action_pressed("hurry the fuck up key") && position.y > -30.0:
+		direction.y -= 100
+		speed = 700
+	else:
+		speed = 200
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 10
 	if Input.is_action_pressed("ui_left"):
 		direction.x -= 10
+		$Placeholeder.flip_h = true
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 10
+		$Placeholeder.flip_h = false
 	if direction != Vector2.ZERO:
 		state.linear_velocity = direction.normalized() * speed
 	else:
