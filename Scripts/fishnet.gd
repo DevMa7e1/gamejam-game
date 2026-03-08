@@ -52,13 +52,16 @@ func _process(delta: float) -> void:
 
 	if visible:
 		if(Input.is_action_just_pressed("fish net key")):
-			get_child(0).texture = preload("res://Sprites/fishnet_placeholder.png")
+			get_child(0).hide()
+			get_child(1).show()
+			get_child(1).play("default")
 			fishing = true
 			fishnet_timer = 0
 	if fishing:
 		fishnet_timer += delta
 		if(fishnet_timer > 0.4):
-			get_child(0).texture = preload("res://Sprites/fish_net_normal_placeholder.png")
+			get_child(0).show()
+			get_child(1).hide()
 			fishing = false
 			for i in bodies:
 				$"..".le_fishes.append([i.level, i.color])
